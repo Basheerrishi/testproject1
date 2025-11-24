@@ -2,7 +2,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Anniversary Party RSVP</title>
+    <title>Rishi weds Sweety - RSVP</title>
     <style>
         * {
             box-sizing: border-box;
@@ -21,21 +21,77 @@
             flex-direction: column;
         }
 
+        /* Top navigation with title + tabs */
+        .top-bar {
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(8px);
+            color: #fff;
+            padding: 10px 20px;
+        }
+
+        .top-bar-inner {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .site-title {
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .site-title span {
+            font-size: 1.2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 12px;
+            flex-wrap: wrap;
+        }
+
+        .nav-link {
+            text-decoration: none;
+            padding: 6px 12px;
+            border-radius: 999px;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            color: #fff;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.18);
+        }
+
         .header {
             text-align: center;
-            padding: 30px 20px 10px;
+            padding: 24px 20px 10px;
             color: #fff;
         }
 
         .header h1 {
-            margin: 0;
-            font-size: 2.4rem;
-            text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+            margin: 0 0 6px;
+            font-size: 2.3rem;
+            text-shadow: 0 3px 6px rgba(0,0,0,0.25);
+        }
+
+        .header h2 {
+            margin: 0 0 12px;
+            font-size: 1.35rem;
         }
 
         .header p {
-            margin-top: 8px;
-            font-size: 1.1rem;
+            margin-top: 4px;
+            font-size: 1.05rem;
         }
 
         .content {
@@ -188,6 +244,70 @@
             pointer-events: none;
         }
 
+        /* Menu section */
+        .menu-section {
+            max-width: 1100px;
+            margin: 0 auto 40px;
+            padding: 0 20px 40px;
+        }
+
+        .menu-card {
+            background-color: rgba(255,255,255,0.97);
+            border-radius: 16px;
+            padding: 22px 24px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.18);
+        }
+
+        .menu-title {
+            font-size: 1.6rem;
+            margin-top: 0;
+            margin-bottom: 4px;
+            color: #4a148c;
+        }
+
+        .menu-subtitle {
+            margin-top: 0;
+            margin-bottom: 18px;
+            color: #6a1b9a;
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 18px;
+        }
+
+        .menu-column {
+            padding: 14px 16px;
+            border-radius: 12px;
+        }
+
+        .menu-column.veg {
+            background: linear-gradient(135deg, #e8f5e9, #c8e6c9);
+        }
+
+        .menu-column.non-veg {
+            background: linear-gradient(135deg, #ffebee, #ffcdd2);
+        }
+
+        .menu-column h3 {
+            margin-top: 0;
+            margin-bottom: 8px;
+        }
+
+        .menu-tags {
+            font-size: 0.8rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 0.07em;
+        }
+
+        .menu-column ul {
+            margin: 8px 0 0;
+            padding-left: 18px;
+            font-size: 0.95rem;
+        }
+
         .footer {
             text-align: center;
             color: #fff;
@@ -199,78 +319,147 @@
             .content {
                 grid-template-columns: 1fr;
             }
+
+            .top-bar-inner {
+                flex-direction: column;
+                align-items: flex-start;
+            }
         }
     </style>
 </head>
 <body>
 <div class="page-wrapper">
+
+    <!-- Top nav with title + tabs -->
+    <div class="top-bar">
+        <div class="top-bar-inner">
+            <div class="site-title">
+                <span>💍</span> Rishi weds Sweety
+            </div>
+            <nav class="nav-links">
+                <a class="nav-link" href="#rsvp">RSVP</a>
+                <a class="nav-link" href="#menu">Menu</a>
+            </nav>
+        </div>
+    </div>
+
     <header class="header">
-        <h1>💍 Anniversary Celebration RSVP 💍</h1>
-        <p>We’re tying another knot of memories. Please confirm your presence and dinner preference.</p>
+        <h1>Rishi weds Sweety</h1>
+        <h2>Anniversary Celebration & Dinner</h2>
+        <p>Please confirm your presence and check out the menu below.</p>
     </header>
 
-    <main class="content">
-        <!-- Left: RSVP form -->
-        <section class="card">
-            <h2>Your RSVP Details</h2>
-            <p>Please fill this in so we can plan the food and seating comfortably.</p>
+    <main>
+        <!-- RSVP + Posters + Car -->
+        <div class="content">
 
-            <form action="rsvp" method="post">
-                <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="e.g. Rahul Sharma" required />
+            <!-- Left: RSVP form -->
+            <section class="card" id="rsvp">
+                <h2>Your RSVP Details</h2>
+                <p>Please fill this in so we can plan the food and seating comfortably.</p>
 
-                <label for="count">Number of People Attending</label>
-                <input type="number" id="count" name="count" min="1" value="1" required />
+                <form action="rsvp" method="post">
+                    <label for="name">Your Name</label>
+                    <input type="text" id="name" name="name"
+                           placeholder="e.g. Rahul Sharma" required />
 
-                <label for="foodPreference">Food Preference</label>
-                <select id="foodPreference" name="foodPreference" required>
-                    <option value="">-- Select --</option>
-                    <option value="VEG">Veg</option>
-                    <option value="NON_VEG">Non Veg</option>
-                </select>
+                    <label for="count">Number of People Attending</label>
+                    <input type="number" id="count" name="count" min="1" value="1" required />
 
-                <button type="submit">Submit RSVP</button>
-            </form>
-        </section>
+                    <label for="foodPreference">Food Preference</label>
+                    <select id="foodPreference" name="foodPreference" required>
+                        <option value="">-- Select --</option>
+                        <option value="VEG">Veg</option>
+                        <option value="NON_VEG">Non Veg</option>
+                    </select>
 
-        <!-- Right: Posters + Wedding car visual -->
-        <section>
-            <div class="posters-section">
-                <div class="posters-title">Wedding Vibes Posters 🎊</div>
-                <div class="posters-grid">
-                    <div class="poster-card">
-                        <img src="images/poster1.jpg" alt="Wedding poster 1"/>
-                        <div class="poster-caption">“Two hearts, one celebration.”</div>
-                    </div>
-                    <div class="poster-card">
-                        <img src="images/poster2.jpg" alt="Wedding poster 2"/>
-                        <div class="poster-caption">Join us for music, lights & love.</div>
-                    </div>
-                    <div class="poster-card">
-                        <img src="images/poster3.jpg" alt="Wedding poster 3"/>
-                        <div class="poster-caption">Your presence is the best gift.</div>
-                    </div>
-                </div>
-            </div>
+                    <button type="submit">Submit RSVP</button>
+                </form>
+            </section>
 
-            <div class="car-section">
-                <div class="car-header">Wedding Ride – Hop In! 🚗💒</div>
-                <div class="car-wrapper">
-                    <div class="car-emoji">👰🤵</div>
-                    <div class="car-text">
-                        Imagine the bride and groom cruising in, with friends and family cheering,
-                        flowers flying in the air, and you right there with us!  
-                        RSVP now and be part of our journey.
+            <!-- Right: Posters + Wedding car visual -->
+            <section>
+                <div class="posters-section">
+                    <div class="posters-title">Wedding Vibes Posters 🎊</div>
+                    <div class="posters-grid">
+                        <div class="poster-card">
+                            <img src="images/poster1.jpg" alt="Wedding poster 1"/>
+                            <div class="poster-caption">“Two hearts, one celebration.”</div>
+                        </div>
+                        <div class="poster-card">
+                            <img src="images/poster2.jpg" alt="Wedding poster 2"/>
+                            <div class="poster-caption">Music, lights & lifetime memories.</div>
+                        </div>
+                        <div class="poster-card">
+                            <img src="images/poster3.jpg" alt="Wedding poster 3"/>
+                            <div class="poster-caption">Your presence is our favourite gift.</div>
+                        </div>
                     </div>
                 </div>
-                <!-- Optional image of wedding car -->
-                <img src="images/wedding-car.png" alt="Wedding car with bride and groom" class="car-image"/>
+
+                <div class="car-section">
+                    <div class="car-header">Wedding Ride – Hop In! 🚗💒</div>
+                    <div class="car-wrapper">
+                        <div class="car-emoji">👰🤵</div>
+                        <div class="car-text">
+                            Rishi & Sweety are driving into a new year of love and togetherness.
+                            Come join the celebration, enjoy the food, and make the ride memorable!
+                        </div>
+                    </div>
+                    <!-- Optional image of wedding car -->
+                    <img src="images/wedding-car.png" alt="Wedding car with bride and groom" class="car-image"/>
+                </div>
+            </section>
+        </div>
+
+        <!-- Menu section: Veg & Non-Veg items -->
+        <section class="menu-section" id="menu">
+            <div class="menu-card">
+                <h2 class="menu-title">Wedding Dinner Menu</h2>
+                <p class="menu-subtitle">Here’s what’s cooking for the big night – separate counters for Veg and Non-Veg.</p>
+
+                <div class="menu-grid">
+                    <!-- Veg column -->
+                    <div class="menu-column veg">
+                        <div class="menu-tags">Veg Specials 🌿</div>
+                        <h3>Vegetarian Delights</h3>
+                        <ul>
+                            <li>Paneer Tikka / Paneer Butter Masala</li>
+                            <li>Veg Manchurian / Hakka Noodles</li>
+                            <li>Dal Makhani & Jeera Rice</li>
+                            <li>Mixed Veg Curry / Aloo Gobi</li>
+                            <li>Assorted Indian Breads (Butter Naan, Roti)</li>
+                            <li>Green Salad & Raita</li>
+                            <li>Gulab Jamun / Ice Cream</li>
+                        </ul>
+                    </div>
+
+                    <!-- Non-Veg column -->
+                    <div class="menu-column non-veg">
+                        <div class="menu-tags">Non-Veg Specials 🍗</div>
+                        <h3>Non-Vegetarian Treats</h3>
+                        <ul>
+                            <li>Chicken Tandoori / Chicken Tikka</li>
+                            <li>Butter Chicken / Chicken Curry</li>
+                            <li>Egg Curry (optional)</li>
+                            <li>Flavoured Rice / Biryani</li>
+                            <li>Fish Fry (subject to availability)</li>
+                            <li>Assorted Indian Breads</li>
+                            <li>Desserts & Sweets Counter</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <p style="margin-top:16px;font-size:0.95rem;">
+                    Guests can choose their preference while filling the RSVP form, so we can plan
+                    Veg and Non-Veg quantities accurately.
+                </p>
             </div>
         </section>
     </main>
 
     <footer class="footer">
-        With love, waiting to celebrate this special day with you ❤️
+        Rishi weds Sweety • Looking forward to celebrating with you ❤️
     </footer>
 </div>
 </body>
