@@ -22,7 +22,17 @@
         <!-- Centralize surefire version to avoid “outdated plugin” issues -->
         <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
     </properties>
+<distributionManagement>
+        <repository>
+            <id>mynexusid</id>
+            <url>http://54.167.238.134:8081/repository/maven-releases/</url>
+        </repository>
 
+        <snapshotRepository>
+            <id>mynexusid</id>
+            <url>http://54.167.238.134:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
     <dependencies>
         <!-- Modern JUnit 5 instead of very old JUnit 3.8.1 -->
         <dependency>
