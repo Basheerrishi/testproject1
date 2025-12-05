@@ -14,15 +14,48 @@
     <url>http://maven.apache.org</url>
 
     <properties>
-        <!-- Adjust these if you’re using Java 8/11 instead of 17 -->
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-
-        <!-- Centralize surefire version to avoid “outdated plugin” issues -->
         <maven.surefire.plugin.version>3.2.5</maven.surefire.plugin.version>
     </properties>
-<distributionManagement>
+
+    <!-- ===================================================== -->
+    <!--                Nexus Repositories Added               -->
+    <!-- ===================================================== -->
+    <repositories>
+        <repository>
+            <id>nexus-releases</id>
+            <url>http://54.167.238.134:8081/repository/maven-releases/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </repository>
+
+        <repository>
+            <id>nexus-snapshots</id>
+            <url>http://54.167.238.134:8081/repository/maven-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </repository>
+    </repositories>
+
+    <pluginRepositories>
+        <pluginRepository>
+            <id>nexus-plugin-releases</id>
+            <url>http://54.167.238.134:8081/repository/maven-releases/</url>
+            <releases><enabled>true</enabled></releases>
+            <snapshots><enabled>false</enabled></snapshots>
+        </pluginRepository>
+
+        <pluginRepository>
+            <id>nexus-plugin-snapshots</id>
+            <url>http://54.167.238.134:8081/repository/maven-snapshots/</url>
+            <releases><enabled>false</enabled></releases>
+            <snapshots><enabled>true</enabled></snapshots>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <distributionManagement>
         <repository>
             <id>mynexusid</id>
             <url>http://54.167.238.134:8081/repository/maven-releases/</url>
@@ -33,8 +66,9 @@
             <url>http://54.167.238.134:8081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
+    <!-- ===================================================== -->
+
     <dependencies>
-        <!-- Modern JUnit 5 instead of very old JUnit 3.8.1 -->
         <dependency>
             <groupId>org.junit.jupiter</groupId>
             <artifactId>junit-jupiter</artifactId>
@@ -42,7 +76,6 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Servlet API provided by the application server (Tomcat/Jetty/etc.) -->
         <dependency>
             <groupId>jakarta.servlet</groupId>
             <artifactId>jakarta.servlet-api</artifactId>
@@ -55,7 +88,7 @@
         <finalName>furniture-showroom</finalName>
 
         <plugins>
-            <!-- Up-to-date compiler plugin -->
+
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -66,7 +99,6 @@
                 </configuration>
             </plugin>
 
-            <!-- Newer Surefire for running JUnit 5 tests and newer JDKs -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
@@ -76,16 +108,15 @@
                 </configuration>
             </plugin>
 
-            <!-- WAR plugin (modern version) -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>3.3.2</version>
                 <configuration>
-                    <!-- Set to false if you’re on Servlet 3+ and don’t want web.xml -->
                     <failOnMissingWebXml>false</failOnMissingWebXml>
                 </configuration>
             </plugin>
+
         </plugins>
     </build>
 
